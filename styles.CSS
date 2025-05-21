@@ -1,0 +1,527 @@
+/* Importación de una fuente de Google Fonts para un diseño más atractivo */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+/* Estilos Generales y Reset */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #333;
+    line-height: 1.6;
+
+    /* Nuevos estilos para el fondo con el logo repetido y animado */
+    background-color: #f4f4f4; /* Un color de fondo base por si la imagen tarda en cargar */
+    background-image: url('img/sin texto.png'); /* Ruta a tu logo - Asegúrate que 'sin texto.png' esté en la carpeta 'img' */
+    background-repeat: repeat; /* Hace que el logo se repita en patrón */
+    background-size: 80px 80px; /* Tamaño de cada logo en el patrón. Ajusta estos valores para cambiar el tamaño del logo en el patrón */
+    background-position: 0 0; /* Posición inicial del fondo */
+
+    /* Animación para el movimiento suave del fondo */
+    animation: moveBackground 60s linear infinite; /* 60s para una velocidad muy suave, linear para que sea constante, infinite para que no pare */
+    overflow-x: hidden; /* Evita barras de desplazamiento horizontales si la animación se sale del límite */
+}
+
+/* Capa semi-transparente para asegurar la legibilidad del texto */
+body::before {
+    content: '';
+    position: fixed; /* 'fixed' lo mantiene en la misma posición al hacer scroll, 'absolute' lo mueve con el scroll */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.75); /* Fondo blanco semi-transparente (ajusta la opacidad: 0.0 a 1.0) */
+    z-index: -1; /* Asegura que esté detrás del contenido pero por encima del fondo animado */
+    pointer-events: none; /* Permite que los clics pasen a los elementos subyacentes */
+}
+
+/* Definición de la animación de movimiento del fondo */
+@keyframes moveBackground { /* ¡Corrección: aquí va el @ ! */
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 100%; /* Mueve el fondo diagonalmente. Puedes ajustar la dirección (ej. '100% 0' para horizontal) */
+    }
+}
+
+/* Propiedades globales para el modelo de caja */
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* Navegación (Header) */
+header {
+    background-color: #f7e21e; /* Color de fondo del encabezado (amarillo/dorado) */
+    color: #2f0303; /* Color de texto para el encabezado */
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(250, 202, 10, 0);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    display: flex; /* Habilitamos Flexbox para alinear el logo y el texto */
+    align-items: center; /* Centra verticalmente el logo y el texto */
+    font-size: 1.5rem; /* Tamaño de fuente para el texto "Tu Empresa" */
+    font-weight: 700;
+    color: #2f0303; /* Color de texto para "Tu Empresa" (lo cambié a un tono oscuro para que contraste con el header amarillo) */
+}
+
+.logo img {
+    height: 80px; /* Altura de la imagen del logo en el encabezado. Ajusta este valor. */
+    width: auto;
+    margin-right: 30px; /* Espacio entre el logo y el texto */
+    vertical-align: middle;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+/* En pantallas pequeñas, podemos apilar el logo y el texto si es necesario,
+   o simplemente reducir el margen. Mantendremos el flexbox para que se vean bien. */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.5rem;
+        flex-direction: column; /* Apila el logo y el texto en pantallas pequeñas */
+        text-align: center;
+    }
+    .logo img {
+        height: 35px;
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 35px;
+}
+
+nav ul li a {
+    color: #000000; /* Color de los enlaces de navegación */
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: block;
+    padding: 5px 0;
+}
+
+/* Efecto hover para enlaces de navegación */
+nav ul li a:hover {
+    color: #fff7b7; /* Color de los enlaces al pasar el cursor (amarillo claro) */
+    transform: scale(1.1);
+}
+
+/* Secciones Generales */
+.section-padded {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: linear-gradient(to bottom, #ffffffab, #fcfcfc6e); /* Degradado de blanco a blanco-casi-blanco */
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.007);
+}
+
+.section-padded:nth-of-type(even) { /* Estilo alterno para secciones pares */
+    background: linear-gradient(to bottom, #ffffffce, #ffffffbc);
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.43);
+}
+
+/* Ajuste de títulos h1, h2, h3 */
+h1 { /* h1 debería estar en el hero, color blanco para contraste */
+    text-align: center;
+    color: #11172d; /* Color blanco para el texto del h1 en el hero */
+    margin-bottom: 20px; /* Ajustado del original 40px */
+    font-size: 2.8rem;
+}
+
+h2 { /* Ajuste para h2 para permitir iconos y centrar el texto (usado en Contacto, Sobre Nosotros, Servicios) */
+    text-align: center;
+    color: #2c3e50; /* Color principal para h2 */
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+}
+
+h2 i { /* Estilo para el icono dentro del h2 */
+    margin-right: 15px;
+    color: #ede027; /* Color del icono (amarillo/dorado) */
+    font-size: 1.8rem;
+}
+
+h3 { /* Subtítulos como los de servicios o blog */
+    text-align: center; /* Mantenemos centrado para subtítulos de grid */
+    color: #2764a9; /* Un tono azul para los h3 */
+    font-size: 1.6rem;
+    margin-bottom: 15px; /* Ajustado a 15px para un mejor espaciado con el texto */
+}
+
+
+.content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: justify; /* Justifica el texto para una apariencia más limpia */
+}
+
+/* Sección Hero (Inicio) */
+.hero {
+    /* Esta sección ya no tiene la imagen de fondo con tu logo grande,
+       ahora solo define su color de fondo y el contenido */
+   background: linear-gradient(to bottom, rgba(252, 214, 0, 0.9), rgba(255, 255, 255, 0.354)); /* Degradado de azul oscuro a azul claro */
+    color: #071024;
+    text-align: center;
+    padding: 150px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    /* Las media queries de background-size en .hero ya no son necesarias aquí porque el fondo está en el body */
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+}
+
+/* Botones (General) */
+.btn {
+    display: inline-block;
+    background-color: #3498db; /* Azul vibrante para los botones, considera si quieres que coincida con tu paleta (amarillos/dorados) */
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+/* Efecto hover para botones */
+.btn:hover {
+    background-color: #f7c027; /* Color hover del botón general (amarillo/dorado) */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+.btn-small {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    border-radius: 3px;
+    background-color: #f6f617da; /* Color de botón pequeño (amarillo/dorado con opacidad) */
+}
+
+.btn-small:hover {
+    background-color: #dfdf2b; /* Color hover de botón pequeño */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Grid para Servicios, Galería y Blog */
+.services-grid, .gallery-grid, .blog-posts-grid {
+    display: grid;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* Servicios */
+.services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.service-item {
+    background: linear-gradient(to bottom, #e1f0f4, #fffffff9); /* Fondo claro para los items de servicio */
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Añadí sombra que faltaba aquí */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Añadí transición para hover */
+}
+
+.service-item:hover { /* Añadí efecto hover para service-item */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.service-item h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #2c3e50; /* Color de los títulos de servicio */
+}
+
+/* Galería */
+.gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Blog */
+.blog-posts-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.blog-post {
+    background-color: #cee4e0;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.175);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.264);
+}
+
+.blog-post h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    text-align: left;
+}
+
+.blog-post .post-meta {
+    font-size: 0.9rem;
+    color: #0b1624;
+    margin-bottom: 15px;
+}
+
+.blog-post p {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+/* Formulario de Contacto Mejorado */
+.contact-form {
+    max-width: 650px;
+    margin: 40px auto 0 auto;
+    background: linear-gradient(to bottom, #fefefe1f, #f0f0f0bb);
+    padding: 50px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(20, 29, 54, 0.2);
+    border: 1px solid #e8e8a6;
+    
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #555;
+    font-size: 1.1rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #faf8a7;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #ffffff;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.25);
+    outline: none;
+    background-color: #fdf3bc; /* Fondo al enfocar el campo */
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Botón de Enviar del Formulario */
+.contact-form .btn {
+    width: 100%;
+    padding: 18px 30px;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    background-color: #f8e943e6; /* Color principal del botón de contacto */
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgb(236, 213, 6);
+}
+
+.contact-form .btn:hover {
+    background-color: #c3df29; /* Color hover del botón de contacto */
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+/* Mensajes del formulario */
+.form-message {
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    display: none;
+    font-size: 1rem;
+    animation: fadeIn 0.5s forwards;
+}
+
+.form-message.success {
+    background-color: #e6ffe6;
+    color: #d3e438e7; /* Texto de mensaje de éxito (amarillo/verde) */
+    border: 1px solid #e1e695;
+}
+
+.form-message.error {
+    background-color: #ffe6e6;
+    color: #dc3545;
+    border: 1px solid #e6a3a3;
+}
+
+/* Animación para el mensaje */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Media Queries para responsividad del formulario */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Apila el logo y el menú en pantallas pequeñas */
+        padding: 10px 15px;
+    }
+
+    nav ul {
+        flex-direction: column; /* Apila los enlaces del menú */
+        width: 100%;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    nav ul li {
+        margin: 10px 0; /* Espacio vertical entre los enlaces */
+    }
+
+    .logo {
+        margin-bottom: 10px; /* Agregado para separar el logo del menú en móvil */
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .hero {
+        padding: 100px 20px;
+        min-height: 50vh;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .section-padded {
+        padding: 40px 15px;
+    }
+
+    .services-grid, .gallery-grid, .blog-posts-grid {
+        grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
+    }
+
+    .service-item, .blog-post, .gallery-grid img {
+        margin-bottom: 20px; /* Espacio entre los items apilados */
+    }
+
+    .contact-form {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+    }
+
+    .form-group input, .form-group textarea {
+        padding: 10px;
+    }
+
+    .contact-form {
+        padding: 20px;
+    }
+    .form-group label {
+        font-size: 1rem;
+    }
+    .form-group input, .form-group textarea, .contact-form .btn {
+        padding: 12px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Pie de Página (Footer) */
+footer {
+    background-color: #34495e; /* Un azul más oscuro para el footer */
+    color: #ecf0f1;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 50px; /* Espacio superior */
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
