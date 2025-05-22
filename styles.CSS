@@ -12,7 +12,7 @@ body {
 
     /* Nuevos estilos para el fondo con el logo repetido y animado */
     background-color: #f4f4f4; /* Un color de fondo base por si la imagen tarda en cargar */
-    background-image: url('img/sin texto.png'); /* Ruta a tu logo - Asegúrate que 'sin texto.png' esté en la carpeta 'img' */
+    background-image: url('IMG/sin texto.png'); /* Ruta a tu logo - Asegúrate que 'sin texto.png' esté en la carpeta 'img' */
     background-repeat: repeat; /* Hace que el logo se repita en patrón */
     background-size: 80px 80px; /* Tamaño de cada logo en el patrón. Ajusta estos valores para cambiar el tamaño del logo en el patrón */
     background-position: 0 0; /* Posición inicial del fondo */
