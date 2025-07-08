@@ -110,3 +110,30 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 100 + (index * 100)); // Retraso progresivo para cada imagen
     });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    // ... (Tu código JavaScript existente) ...
+
+    // NUEVO CÓDIGO PARA EXPANDIR/CONTRAER LOS ARTÍCULOS DEL BLOG
+    const blogReadMoreButtons = document.querySelectorAll('.blog-post .btn-small');
+
+    blogReadMoreButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault(); // Evita que el enlace salte a #
+
+            const blogPostArticle = this.closest('.blog-post'); // Encuentra el <article> padre
+            const contentWrapper = blogPostArticle.querySelector('.blog-content-wrapper'); // Encuentra el envoltorio de contenido
+
+            if (contentWrapper) {
+                // Alterna la clase 'expanded'
+                contentWrapper.classList.toggle('expanded');
+
+                // Cambia el texto del botón
+                if (contentWrapper.classList.contains('expanded')) {
+                    this.textContent = 'Ver Menos';
+                } else {
+                    this.textContent = 'Leer Más';
+                }
+            }
+        });
+    });
+});
