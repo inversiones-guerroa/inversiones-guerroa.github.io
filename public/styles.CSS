@@ -1,0 +1,856 @@
+/* Importación de una fuente de Google Fonts para un diseño más atractivo */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+/* Estilos Generales y Reset */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #333;
+    line-height: 1.6;
+
+    /* MODIFICACIÓN 1: Estilos para el fondo con el logo repetido y animado */
+    /* Se usa opacidad muy baja (#33) para un efecto 'fantasma' sutil. */
+    background-color: #f3e9ab33; 
+    background-image: url('IMG/sin texto.png');
+    background-repeat:repeat;
+    background-size: 130px 130px;
+    background-position: 0 0;
+    overflow-x: hidden;
+}
+
+/* Animación solo en desktop para mejor rendimiento */
+@media (min-width: 769px) {
+    body {
+        animation: moveBackground 60s linear infinite;
+        will-change: background-position;
+    }
+}
+
+/* MODIFICACIÓN 2: Capa semi-transparente para el filtro amarillo a blanco */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Se usa background-image para el degradado */
+    background-image: linear-gradient(to bottom,
+        rgba(250, 250, 101, 0.91), /* Amarillo muy claro con 90% de opacidad */
+        rgba(255, 255, 255, 0.962)  /* Blanco con 90% de opacidad */
+    );
+    z-index: -1;
+    pointer-events: none;
+}
+
+
+/* Definición de la animación de movimiento del fondo */
+@keyframes moveBackground {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 100%;
+    }
+}
+
+/* Propiedades globales para el modelo de caja */
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+header {
+    /* Liquid Glass CLARO: Fondo casi transparente */
+    background: linear-gradient(to bottom, #f0e5af81, #dcdca941);
+    backdrop-filter: blur(8px);
+    
+    padding: 1rem 0;
+    position: scroll; 
+    top: 15px;
+    z-index: 1000;
+    
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+    border: none; 
+    border-radius: 10px; 
+    
+    /* Mantenemos el margen y ancho para que se vea el fondo alrededor */
+    margin-top: 15px; 
+    margin-left: 15px;
+    margin-right: 15px;
+    width: calc(100% - 30px); 
+}
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2f0303;
+}
+
+.logo img {
+    height: 80px;
+    width: auto;
+    margin-right: 30px;
+    vertical-align: middle;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+/* En pantallas pequeñas, podemos apilar el logo y el texto si es necesario,
+    o simplemente reducir el margen. Mantendremos el flexbox para que se vean bien. */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.5rem;
+        flex-direction: column;
+        text-align: center;
+    }
+    .logo img {
+        height: 35px;
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 35px;
+}
+
+nav ul li a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: block;
+    padding: 5px 0;
+}
+
+/* Efecto hover para enlaces de navegación */
+nav ul li a:hover {
+    color: #16150a;
+    transform: scale(1.1);
+}
+
+/* Secciones Generales */
+.section-padded {
+    padding: 20px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    background: linear-gradient(to bottom, #ffffff03, #fcfcfc15);
+    margin-bottom: 20px;
+    border-radius: 16px;
+    
+}
+
+.section-padded:nth-of-type(even) {
+    background: linear-gradient(to bottom, #ffffff, #fcfcfae2);
+    box-shadow: 0 10px 30px rgba(20, 29, 54, 0.2);
+}
+
+/* Ajuste de títulos h1, h2, h3 */
+h1 {
+    text-align: center;
+    color: #11172d;
+    margin-bottom: 20px;
+    font-size: 2.8rem;
+}
+
+h2 {
+    text-align: center;
+    color: #2a2a22;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    transition: opacity 0.6s, transform 0.6s;
+}
+
+h2 i {
+    margin-right: 15px;
+    color: #ede027;
+    font-size: 1.8rem;
+}
+
+h3 {
+    text-align: center;
+    color: #2764a9;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+
+.content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: justify;
+}
+
+/* Sección Hero (Inicio) */
+.hero {
+  min-height: 100vh; /* ocupa toda la altura de la pantalla */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 20px;
+  text-align: center;
+  margin-bottom: 60px; /* separa visualmente del bloque siguiente */
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+}
+
+/* Botones (General) */
+.btn {
+    display: inline-block;
+    background-color: #3498db;
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, opacity 0.6s, transform 0.6s;
+    border: none;
+    cursor: pointer;
+}
+
+/* Efecto hover para botones */
+.btn:hover {
+    background-color: #f7c027ca;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+.btn-small {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    border-radius: 3px;
+    background-color: #f6f617da;
+}
+
+.btn-small:hover {
+    background-color: #dfdf2b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Grid para Servicios, Galería y Blog */
+.services-grid, .gallery-grid, .blog-posts-grid {
+    display: grid;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* Servicios */
+.services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.service-item {
+    background: linear-gradient(to bottom, #fbf971f9, #fffffff9);
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.6s, transform 0.6s;
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.service-item h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333329;
+}
+
+/* Galería */
+/* Carrusel de Galería */
+.carousel-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+.carousel-track-container {
+    overflow: hidden;
+    position: relative;
+    height: 500px;
+    will-change: transform;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    will-change: transform;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1a1a1a;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    background: #000;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+.carousel-slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+    padding: 30px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.carousel-slide:hover .carousel-slide-caption {
+    transform: translateY(0);
+}
+
+.carousel-slide-caption h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.carousel-slide-caption p {
+    margin: 0;
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #333;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.carousel-btn:hover {
+    background: #e8ea66;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.carousel-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-btn-prev {
+    left: 20px;
+}
+
+.carousel-btn-next {
+    right: 20px;
+}
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.carousel-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ddd;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.carousel-indicator:hover {
+    background: #bbb;
+    transform: scale(1.2);
+}
+
+.carousel-indicator.active {
+    background: #e8ea66;
+    width: 30px;
+    border-radius: 6px;
+}
+
+/* Animación de entrada */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .carousel-container {
+        padding: 10px;
+    }
+    
+    .carousel-wrapper {
+        border-radius: 12px;
+    }
+    
+    .carousel-track-container {
+        height: 280px;
+    }
+    
+    .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+    
+    .carousel-btn-prev {
+        left: 5px;
+    }
+    
+    .carousel-btn-next {
+        right: 5px;
+    }
+    
+    .carousel-slide-caption {
+        padding: 15px;
+        font-size: 0.85rem;
+    }
+    
+    .carousel-slide-caption h3 {
+        font-size: 1rem;
+    }
+    
+    .carousel-slide-caption p {
+        font-size: 0.8rem;
+    }
+    
+    .carousel-indicators {
+        gap: 8px;
+        margin-top: 15px;
+    }
+    
+    .carousel-indicator {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .carousel-indicator.active {
+        width: 20px;
+    }
+}
+
+/* Mantener estilos antiguos para compatibilidad */
+.gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.6s, transform 0.6s;
+    cursor: pointer;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Blog */
+.blog-posts-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.blog-post {
+    background-color: #fbfbccf7;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(113, 113, 96, 0.516);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.6s, transform 0.6s;
+}
+
+.blog-post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.264);
+}
+
+.blog-post h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #373629;
+    text-align: left;
+}
+
+.blog-post .post-meta {
+    font-size: 0.9rem;
+    color: #0b1624;
+    margin-bottom: 15px;
+}
+
+.blog-post p {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+/* Formulario de Contacto Mejorado */
+.contact-form {
+    max-width: 650px;
+    margin: 40px auto 0 auto;
+    background: linear-gradient(to bottom, #fefefe1f, #f0f0f0bb);
+    padding: 50px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(20, 29, 54, 0.2);
+    border: 1px solid #e8e8a6;
+    
+}
+/* Estilo para centrar el párrafo del mensaje */
+.mensaje-centrado {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #555;
+    font-size: 1.1rem;
+}
+
+/* MODIFICACIÓN 3: Estilos generales para todos los campos de entrada/selección */
+/* Se QUITA width: 100% de aquí para aplicarlo de forma más específica */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"], /* AÑADIDO: Soporte para Teléfono */
+.form-group select,            /* AÑADIDO: Soporte para Tipo de Servicio */
+.form-group textarea {
+    padding: 15px;
+    border: 2px solid #f3efb7;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #ffffff;
+    /* (Opcional) para mejorar la apariencia del <select> */
+    -webkit-appearance: none; 
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* MODIFICACIÓN 4: Aplicación de ancho específico para campos cortos (Nombre, Email, Teléfono, Tipo de Servicio) */
+/* Esto resuelve que los campos no ocupen todo el ancho del formulario. */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group select {
+    max-width: 900px; /* Limita el ancho de los campos a 400px */
+    width: 100%; /* Asegura que sean responsivos hasta el límite de 400px */
+    box-sizing: border-box; 
+}
+
+/* Asegura que el área de texto (Mensaje) use el ancho completo del formulario */
+.form-group textarea {
+    width: 100%;
+    resize: vertical;
+    min-height: 120px;
+}
+/* Estilos de enfoque para todos los campos */
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="tel"]:focus, /* AÑADIDO: Foco para Teléfono */
+.form-group select:focus,            /* AÑADIDO: Foco para Tipo de Servicio */
+.form-group textarea:focus {
+    border-color: #fcf06def;
+    box-shadow: 0 0 15px rgba(63, 65, 53, 0.25);
+    outline: none;
+    background-color: #fffddae6;
+}
+
+/* Botón de Enviar del Formulario */
+.contact-form .btn {
+    width: 100%;
+    padding: 18px 30px;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    background-color: #f3ea82bd;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgb(236, 213, 6);
+}
+
+.contact-form .btn:hover {
+    background-color: #aefa43;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+/* Mensajes del formulario */
+.form-message {
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    display: none;
+    font-size: 1rem;
+    animation: fadeIn 0.5s forwards;
+}
+
+.form-message.success {
+    background-color: #e6ffe6;
+    color: #131e38e7;
+    border: 1px solid #e2e6a5;
+}
+
+.form-message.error {
+    background-color: #ffe6e6;
+    color: #dc3545;
+    border: 1px solid #e6a3a3;
+}
+/* Estilo del contenedor para posicionar la flecha */
+.select-wrapper {
+    position: relative; /* Es esencial para posicionar la flecha dentro */
+    display: inline-block; /* Ocupa el ancho limitado que definimos (max-width: 400px) */
+    width: 100%; /* Asegura que se estire hasta el max-width del .form-group select */
+    max-width: 400px; /* Hereda el ancho máximo para la consistencia */
+}
+
+/* Estilo de la flecha usando un pseudo-elemento */
+.select-wrapper::after {
+    content: "\f078"; /* Código Unicode para un ícono de flecha hacia abajo (de Font Awesome) */
+    font-family: 'Font Awesome 6 Free'; /* Usa la fuente Font Awesome */
+    font-weight: 900; /* Para íconos sólidos */
+    position: absolute;
+    top: 50%; /* Centra verticalmente */
+    right: 15px; /* Posiciona a 15px del borde derecho */
+    transform: translateY(-50%); /* Ajuste final para el centrado vertical */
+    color: #333; /* Color del ícono de la flecha */
+    pointer-events: none; /* Asegura que el clic pase al elemento select */
+    font-size: 0.8rem; /* Tamaño de la flecha */
+}
+
+/* Ajuste: quitamos los estilos de apariencia del select que están en el bloque anterior,
+   ya que el select-wrapper ahora gestiona el ancho limitado y posicionamiento. */
+.form-group select {
+    padding-right: 40px !important; /* Añade espacio extra a la derecha para que la flecha no cubra el texto */
+}
+
+/* Animación para el mensaje */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Media Queries para responsividad del formulario */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        padding: 10px 15px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .hero {
+        padding: 100px 20px;
+        min-height: 50vh;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .section-padded {
+        padding: 40px 15px;
+    }
+
+    .services-grid, .gallery-grid, .blog-posts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-item, .blog-post, .gallery-grid img {
+        margin-bottom: 20px;
+    }
+
+    .contact-form {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+    }
+
+    .form-group input, .form-group textarea {
+        padding: 10px;
+    }
+
+    .contact-form {
+        padding: 20px;
+    }
+    .form-group label {
+        font-size: 1rem;
+    }
+    .form-group input, .form-group textarea, .contact-form .btn {
+        padding: 12px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Pie de Página (Footer) */
+footer {
+    background-color: #23241f;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 50px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+/* Estilos para el contenido del blog que se expande/contrae */
+.blog-content-wrapper {
+    overflow: hidden;
+    max-height: 100px;
+    transition: max-height 0.7s ease-in-out;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* Efecto de desvanecimiento en la parte inferior cuando el contenido está colapsado */
+.blog-content-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to bottom, rgba(251, 252, 204, 0), rgba(251, 252, 204, 1) 100%);
+    pointer-events: none;
+}
+
+/* Estado expandido */
+.blog-content-wrapper.expanded {
+    max-height: 1000px;
+}
+
+.blog-content-wrapper.expanded::after {
+    content: none;
+}
+
+/* Ajustes para el botón "Leer Más" dentro del blog-post */
+.blog-post .btn-small {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    width: fit-content;
+    margin-top: 10px;
+}
