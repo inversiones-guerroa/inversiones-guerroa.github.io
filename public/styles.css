@@ -12,9 +12,9 @@ body {
 
     /* MODIFICACIÓN 1: Estilos para el fondo con el logo repetido y animado */
     /* Se usa opacidad muy baja (#33) para un efecto 'fantasma' sutil. */
-    background-color: #f3e9ab33; 
+    background-color: #f3e9ab33;
     background-image: url('img/logo.png');
-    background-repeat:repeat;
+    background-repeat: repeat;
     background-size: 130px 130px;
     background-position: 0 0;
     overflow-x: hidden;
@@ -38,9 +38,11 @@ body::before {
     height: 100%;
     /* Se usa background-image para el degradado */
     background-image: linear-gradient(to bottom,
-        rgba(250, 250, 101, 0.91), /* Amarillo muy claro con 90% de opacidad */
-        rgba(255, 255, 255, 0.962)  /* Blanco con 90% de opacidad */
-    );
+            rgba(250, 250, 101, 0.91),
+            /* Amarillo muy claro con 90% de opacidad */
+            rgba(255, 255, 255, 0.962)
+            /* Blanco con 90% de opacidad */
+        );
     z-index: -1;
     pointer-events: none;
 }
@@ -51,13 +53,16 @@ body::before {
     from {
         background-position: 0 0;
     }
+
     to {
         background-position: 100% 100%;
     }
 }
 
 /* Propiedades globales para el modelo de caja */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: inherit;
 }
 
@@ -65,21 +70,21 @@ header {
     /* Liquid Glass CLARO: Fondo casi transparente */
     background: linear-gradient(to bottom, #f0e5af81, #dcdca941);
     backdrop-filter: blur(8px);
-    
+
     padding: 1rem 0;
-    position: scroll; 
+    position: scroll;
     top: 15px;
     z-index: 1000;
-    
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
-    border: none; 
-    border-radius: 10px; 
-    
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 10px;
+
     /* Mantenemos el margen y ancho para que se vea el fondo alrededor */
-    margin-top: 15px; 
+    margin-top: 15px;
     margin-left: 15px;
     margin-right: 15px;
-    width: calc(100% - 30px); 
+    width: calc(100% - 30px);
 }
 
 
@@ -120,6 +125,7 @@ nav {
         flex-direction: column;
         text-align: center;
     }
+
     .logo img {
         height: 35px;
         margin-right: 0;
@@ -161,7 +167,7 @@ nav ul li a:hover {
     background: linear-gradient(to bottom, #ffffff03, #fcfcfc15);
     margin-bottom: 20px;
     border-radius: 16px;
-    
+
 }
 
 .section-padded:nth-of-type(even) {
@@ -210,14 +216,16 @@ h3 {
 
 /* Sección Hero (Inicio) */
 .hero {
-  min-height: 100vh; /* ocupa toda la altura de la pantalla */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 100px 20px;
-  text-align: center;
-  margin-bottom: 60px; /* separa visualmente del bloque siguiente */
+    min-height: 100vh;
+    /* ocupa toda la altura de la pantalla */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 20px;
+    text-align: center;
+    margin-bottom: 60px;
+    /* separa visualmente del bloque siguiente */
 }
 
 .hero-content {
@@ -247,7 +255,7 @@ h3 {
 .btn:hover {
     background-color: #f7c027ca;
     transform: translateY(-3px);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 .btn-small {
@@ -260,11 +268,13 @@ h3 {
 .btn-small:hover {
     background-color: #dfdf2b;
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Grid para Servicios, Galería y Blog */
-.services-grid, .gallery-grid, .blog-posts-grid {
+.services-grid,
+.gallery-grid,
+.blog-posts-grid {
     display: grid;
     gap: 30px;
     margin-top: 40px;
@@ -280,13 +290,13 @@ h3 {
     padding: 30px;
     border-radius: 8px;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.6s, transform 0.6s;
 }
 
 .service-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .service-item h3 {
@@ -307,7 +317,7 @@ h3 {
     position: relative;
     overflow: hidden;
     border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
 }
 
 .carousel-track-container {
@@ -349,7 +359,7 @@ h3 {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
     color: white;
     padding: 30px;
     transform: translateY(100%);
@@ -388,7 +398,7 @@ h3 {
     justify-content: center;
     font-size: 1.2rem;
     color: #333;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
     -webkit-tap-highlight-color: transparent;
 }
@@ -396,7 +406,7 @@ h3 {
 .carousel-btn:hover {
     background: #e8ea66;
     transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .carousel-btn:active {
@@ -447,6 +457,7 @@ h3 {
         opacity: 0;
         transform: translateX(100px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -458,52 +469,52 @@ h3 {
     .carousel-container {
         padding: 10px;
     }
-    
+
     .carousel-wrapper {
         border-radius: 12px;
     }
-    
+
     .carousel-track-container {
         height: 280px;
     }
-    
+
     .carousel-btn {
         width: 35px;
         height: 35px;
         font-size: 0.9rem;
     }
-    
+
     .carousel-btn-prev {
         left: 5px;
     }
-    
+
     .carousel-btn-next {
         right: 5px;
     }
-    
+
     .carousel-slide-caption {
         padding: 15px;
         font-size: 0.85rem;
     }
-    
+
     .carousel-slide-caption h3 {
         font-size: 1rem;
     }
-    
+
     .carousel-slide-caption p {
         font-size: 0.8rem;
     }
-    
+
     .carousel-indicators {
         gap: 8px;
         margin-top: 15px;
     }
-    
+
     .carousel-indicator {
         width: 8px;
         height: 8px;
     }
-    
+
     .carousel-indicator.active {
         width: 20px;
     }
@@ -519,14 +530,14 @@ h3 {
     height: 200px;
     object-fit: cover;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.6s, transform 0.6s;
     cursor: pointer;
 }
 
 .gallery-grid img:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Blog */
@@ -565,6 +576,37 @@ h3 {
     margin-bottom: 20px;
 }
 
+.blog-content-wrapper {
+    position: relative;
+    max-height: 80px;
+    /* Limita la altura inicial */
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.blog-content-wrapper::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, #fbfbccf7);
+    /* Oculta con degradado del mismo color de fondo */
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.blog-content-wrapper.expanded {
+    max-height: 1000px;
+    /* Suficiente para mostrar todo el texto */
+}
+
+.blog-content-wrapper.expanded::after {
+    opacity: 0;
+    /* Quita el degradado cuando está expandido */
+}
+
 /* Formulario de Contacto Mejorado */
 .contact-form {
     max-width: 650px;
@@ -574,8 +616,9 @@ h3 {
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(20, 29, 54, 0.2);
     border: 1px solid #e8e8a6;
-    
+
 }
+
 /* Estilo para centrar el párrafo del mensaje */
 .mensaje-centrado {
     text-align: center;
@@ -601,8 +644,10 @@ h3 {
 /* Se QUITA width: 100% de aquí para aplicarlo de forma más específica */
 .form-group input[type="text"],
 .form-group input[type="email"],
-.form-group input[type="tel"], /* AÑADIDO: Soporte para Teléfono */
-.form-group select,            /* AÑADIDO: Soporte para Tipo de Servicio */
+.form-group input[type="tel"],
+/* AÑADIDO: Soporte para Teléfono */
+.form-group select,
+/* AÑADIDO: Soporte para Tipo de Servicio */
 .form-group textarea {
     padding: 15px;
     border: 2px solid #f3efb7;
@@ -611,7 +656,7 @@ h3 {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     background-color: #ffffff;
     /* (Opcional) para mejorar la apariencia del <select> */
-    -webkit-appearance: none; 
+    -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
 }
@@ -622,9 +667,11 @@ h3 {
 .form-group input[type="email"],
 .form-group input[type="tel"],
 .form-group select {
-    max-width: 900px; /* Limita el ancho de los campos a 400px */
-    width: 100%; /* Asegura que sean responsivos hasta el límite de 400px */
-    box-sizing: border-box; 
+    max-width: 900px;
+    /* Limita el ancho de los campos a 400px */
+    width: 100%;
+    /* Asegura que sean responsivos hasta el límite de 400px */
+    box-sizing: border-box;
 }
 
 /* Asegura que el área de texto (Mensaje) use el ancho completo del formulario */
@@ -633,11 +680,14 @@ h3 {
     resize: vertical;
     min-height: 120px;
 }
+
 /* Estilos de enfoque para todos los campos */
 .form-group input[type="text"]:focus,
 .form-group input[type="email"]:focus,
-.form-group input[type="tel"]:focus, /* AÑADIDO: Foco para Teléfono */
-.form-group select:focus,            /* AÑADIDO: Foco para Tipo de Servicio */
+.form-group input[type="tel"]:focus,
+/* AÑADIDO: Foco para Teléfono */
+.form-group select:focus,
+/* AÑADIDO: Foco para Tipo de Servicio */
 .form-group textarea:focus {
     border-color: #fcf06def;
     box-shadow: 0 0 15px rgba(63, 65, 53, 0.25);
@@ -660,7 +710,7 @@ h3 {
 .contact-form .btn:hover {
     background-color: #aefa43;
     transform: translateY(-4px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
 }
 
 /* Mensajes del formulario */
@@ -686,38 +736,60 @@ h3 {
     color: #dc3545;
     border: 1px solid #e6a3a3;
 }
+
 /* Estilo del contenedor para posicionar la flecha */
 .select-wrapper {
-    position: relative; /* Es esencial para posicionar la flecha dentro */
-    display: inline-block; /* Ocupa el ancho limitado que definimos (max-width: 400px) */
-    width: 100%; /* Asegura que se estire hasta el max-width del .form-group select */
-    max-width: 400px; /* Hereda el ancho máximo para la consistencia */
+    position: relative;
+    /* Es esencial para posicionar la flecha dentro */
+    display: inline-block;
+    /* Ocupa el ancho limitado que definimos (max-width: 400px) */
+    width: 100%;
+    /* Asegura que se estire hasta el max-width del .form-group select */
+    max-width: 400px;
+    /* Hereda el ancho máximo para la consistencia */
 }
 
 /* Estilo de la flecha usando un pseudo-elemento */
 .select-wrapper::after {
-    content: "\f078"; /* Código Unicode para un ícono de flecha hacia abajo (de Font Awesome) */
-    font-family: 'Font Awesome 6 Free'; /* Usa la fuente Font Awesome */
-    font-weight: 900; /* Para íconos sólidos */
+    content: "\f078";
+    /* Código Unicode para un ícono de flecha hacia abajo (de Font Awesome) */
+    font-family: 'Font Awesome 6 Free';
+    /* Usa la fuente Font Awesome */
+    font-weight: 900;
+    /* Para íconos sólidos */
     position: absolute;
-    top: 50%; /* Centra verticalmente */
-    right: 15px; /* Posiciona a 15px del borde derecho */
-    transform: translateY(-50%); /* Ajuste final para el centrado vertical */
-    color: #333; /* Color del ícono de la flecha */
-    pointer-events: none; /* Asegura que el clic pase al elemento select */
-    font-size: 0.8rem; /* Tamaño de la flecha */
+    top: 50%;
+    /* Centra verticalmente */
+    right: 15px;
+    /* Posiciona a 15px del borde derecho */
+    transform: translateY(-50%);
+    /* Ajuste final para el centrado vertical */
+    color: #333;
+    /* Color del ícono de la flecha */
+    pointer-events: none;
+    /* Asegura que el clic pase al elemento select */
+    font-size: 0.8rem;
+    /* Tamaño de la flecha */
 }
 
 /* Ajuste: quitamos los estilos de apariencia del select que están en el bloque anterior,
    ya que el select-wrapper ahora gestiona el ancho limitado y posicionamiento. */
 .form-group select {
-    padding-right: 40px !important; /* Añade espacio extra a la derecha para que la flecha no cubra el texto */
+    padding-right: 40px !important;
+    /* Añade espacio extra a la derecha para que la flecha no cubra el texto */
 }
 
 /* Animación para el mensaje */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Media Queries para responsividad del formulario */
@@ -763,11 +835,15 @@ h3 {
         padding: 40px 15px;
     }
 
-    .services-grid, .gallery-grid, .blog-posts-grid {
+    .services-grid,
+    .gallery-grid,
+    .blog-posts-grid {
         grid-template-columns: 1fr;
     }
 
-    .service-item, .blog-post, .gallery-grid img {
+    .service-item,
+    .blog-post,
+    .gallery-grid img {
         margin-bottom: 20px;
     }
 
@@ -782,17 +858,22 @@ h3 {
         font-size: 0.9rem;
     }
 
-    .form-group input, .form-group textarea {
+    .form-group input,
+    .form-group textarea {
         padding: 10px;
     }
 
     .contact-form {
         padding: 20px;
     }
+
     .form-group label {
         font-size: 1rem;
     }
-    .form-group input, .form-group textarea, .contact-form .btn {
+
+    .form-group input,
+    .form-group textarea,
+    .contact-form .btn {
         padding: 12px;
         font-size: 0.95rem;
     }
@@ -816,6 +897,7 @@ footer p {
     margin: 5px 0;
     font-size: 0.9rem;
 }
+
 /* Estilos para el contenido del blog que se expande/contrae */
 .blog-content-wrapper {
     overflow: hidden;
