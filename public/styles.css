@@ -13,7 +13,7 @@ body {
     /* MODIFICACIÓN 1: Estilos para el fondo con el logo repetido y animado */
     /* Se usa opacidad muy baja (#33) para un efecto 'fantasma' sutil. */
     background-color: #f3e9ab33; 
-    background-image: url('IMG/sin texto.png');
+    background-image: url('img/logo.png');
     background-repeat:repeat;
     background-size: 130px 130px;
     background-position: 0 0;
