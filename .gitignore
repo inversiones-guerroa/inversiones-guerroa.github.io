@@ -4,7 +4,8 @@ node_modules/
 *.log
 backup_*/
 database/*.sqlite
-database/*.sqlite-journal
+database/*.db
+database/*-journal
 dist/
 build/
 .vscode/
