@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://inversiones-guerroa-github-io.onrender.com/</loc>
+    <!-- NOTA: Reemplazar ested enlace con tu URL real de Render completo, ej: https://inversiones-guerroa.onrender.com/ -->
+    <loc>https://inversiones-guerroa-XXXX.onrender.com/</loc>
     <lastmod>2024-05-27</lastmod> <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
