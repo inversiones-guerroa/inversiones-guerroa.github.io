@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://inversiones-guerroa.github.io/sitemap.xml
+Sitemap: https://inversiones-guerroa-github-io.onrender.com/sitemap.xml.
