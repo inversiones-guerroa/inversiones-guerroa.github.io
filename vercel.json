@@ -1,0 +1,13 @@
+{
+  "cleanUrls": true,
+  "routes": [
+    {
+      "src": "/(styles.css|script.js|robots.txt|sitemap.xml|img/.*|galeria/.*)",
+      "dest": "/public/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/index.html"
+    }
+  ]
+}

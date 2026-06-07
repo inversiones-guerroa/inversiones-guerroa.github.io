@@ -1,3 +1,7 @@
+const BACKEND_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname.includes('onrender.com'))
+    ? ''
+    : 'https://inversiones-guerroa-github-io.onrender.com';
+
 document.addEventListener('DOMContentLoaded', function () {
     // ----------------------------------------------------
     // 1. DETECCIÓN DE PÁGINA Y CARGA DE DATOS
@@ -44,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
             };
 
             try {
-                const response = await fetch('/api/contact', {
+                const response = await fetch(`${BACKEND_URL}/api/contact`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(formData)
@@ -72,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     async function cargarConfigAdmin() {
         try {
-            const res = await fetch('/api/public/config');
+            const res = await fetch(`${BACKEND_URL}/api/public/config`);
             const data = await res.json();
             if (data) {
                 if (document.getElementById('sitio-titulo')) document.getElementById('sitio-titulo').value = data.titulo || '';
@@ -110,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!contenedor) return;
 
         try {
-            const res = await fetch('/api/public/galeria');
+            const res = await fetch(`${BACKEND_URL}/api/public/galeria`);
             const imagenes = await res.json();
 
             contenedor.innerHTML = ''; // Limpiamos el contenedor antes de cargar
@@ -121,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 div.style.cssText = 'position:relative; display:inline-block; margin:10px;';
 
                 div.innerHTML = `
-                <img src="/galeria/${imgNombre}" style="width:150px; height:150px; object-fit:cover; border-radius:10px; border: 2px solid #f3efb7;">
+                <img src="${BACKEND_URL}/galeria/${imgNombre}" style="width:150px; height:150px; object-fit:cover; border-radius:10px; border: 2px solid #f3efb7;">
                 <button onclick="borrarImagen('${imgNombre}')" style="position:absolute; top:5px; right:5px; background:#ff4d4d; color:white; border:none; border-radius:50%; width:30px; height:30px; cursor:pointer; font-weight:bold;">
                     X
                 </button>
@@ -142,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
         formData.append('imagen', input.files[0]);
 
         try {
-            const res = await fetch('/api/manage/galeria', {
+            const res = await fetch(`${BACKEND_URL}/api/manage/galeria`, {
                 method: 'POST',
                 body: formData
             });
@@ -160,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!confirm("¿Estás seguro de que deseas eliminar esta imagen de forma permanente?")) return;
 
         try {
-            const res = await fetch(`/api/manage/galeria/${nombre}`, {
+            const res = await fetch(`${BACKEND_URL}/api/manage/galeria/${nombre}`, {
                 method: 'DELETE'
             });
             const data = await res.json();
@@ -177,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     async function cargarConfigPublica() {
         try {
-            const res = await fetch('/api/public/config');
+            const res = await fetch(`${BACKEND_URL}/api/public/config`);
             const data = await res.json();
             // Actualiza elementos del index si existen
             const heroTitle = document.querySelector('.hero h1');
@@ -205,7 +209,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const logo = document.getElementById('adminLogoTrigger');
     if (logo) {
         logo.style.cursor = 'pointer';
-        logo.addEventListener('dblclick', () => window.location.href = 'login.html');
+        logo.addEventListener('dblclick', () => {
+            window.location.href = BACKEND_URL ? `${BACKEND_URL}/login` : 'login.html';
+        });
     }
 
     // Funcionalidad "Leer Más" en Blog
@@ -321,7 +327,7 @@ async function initCarousel() {
 
     try {
         // Cargar imágenes desde el servidor
-        const response = await fetch('/api/public/galeria');
+        const response = await fetch(`${BACKEND_URL}/api/public/galeria`);
         const images = await response.json();
 
         if (images.length === 0) {
@@ -336,7 +342,7 @@ async function initCarousel() {
 
             // Usar loading="lazy" para optimizar carga
             const imgElement = document.createElement('img');
-            imgElement.src = `/galeria/${img}`;
+            imgElement.src = `${BACKEND_URL}/galeria/${img}`;
             imgElement.alt = `Trabajo ${index + 1}`;
             imgElement.loading = index === 0 ? 'eager' : 'lazy'; // Primera imagen carga inmediato
 
