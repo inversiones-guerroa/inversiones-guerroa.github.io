@@ -1,13 +1,10 @@
 {
+  "outputDirectory": "public",
+  "buildCommand": null,
+  "installCommand": null,
+  "framework": null,
   "cleanUrls": true,
-  "routes": [
-    {
-      "src": "/(styles.css|script.js|robots.txt|sitemap.xml|img/.*|galeria/.*)",
-      "dest": "/public/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/public/index.html"
-    }
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
