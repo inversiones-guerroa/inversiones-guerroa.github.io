@@ -27,9 +27,9 @@ const statsRoutes = require('./routes/stats');
 const { authenticateToken } = require('./middleware/auth');
 const { errorHandler } = require('./middleware/errorHandler');
 
-// --- SEGURIDAD Y MIDDLEWARES ---
 app.use(helmet({
-    contentSecurityPolicy: false // Deshabilitar CSP temporalmente para desarrollo
+    contentSecurityPolicy: false, // Deshabilitar CSP temporalmente para desarrollo
+    crossOriginResourcePolicy: { policy: "cross-origin" } // Permitir cargar imágenes desde otro dominio (Vercel)
 }));
 
 app.use(compression());
