@@ -308,7 +308,7 @@ h3 {
 /* Galería */
 /* Carrusel de Galería */
 .carousel-container {
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -323,7 +323,7 @@ h3 {
 .carousel-track-container {
     overflow: hidden;
     position: relative;
-    height: 500px;
+    height: 450px;
     will-change: transform;
 }
 
@@ -347,10 +347,8 @@ h3 {
 .carousel-slide img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     display: block;
-    background: #000;
-    image-rendering: auto;
 }
 
 .carousel-slide-caption {
