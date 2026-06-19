@@ -58,10 +58,27 @@ const contactLimiter = rateLimit({
 
 app.use('/api/', generalLimiter);
 
+const allowedOrigins = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'https://inversiones-guerroa-ca.vercel.app',
+    'https://guerroadesigne.vercel.app' // alias anterior por si acaso
+];
+
+// Añadir FRONTEND_URL desde variables de entorno si está configurado
+if (process.env.FRONTEND_URL && !allowedOrigins.includes(process.env.FRONTEND_URL)) {
+    allowedOrigins.push(process.env.FRONTEND_URL);
+}
+
 app.use(cors({
-    origin: process.env.NODE_ENV === 'production' 
-        ? [process.env.FRONTEND_URL] 
-        : ['http://localhost:3000', 'http://127.0.0.1:3000'],
+    origin: function(origin, callback) {
+        // Permitir solicitudes sin origin (ej. Postman, curl), orígenes en la lista, y cualquier subdominio de vercel.app
+        if (!origin || allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
+            callback(null, true);
+        } else {
+            callback(new Error('CORS no permitido para: ' + origin));
+        }
+    },
     credentials: true
 }));
 
